@@ -2,13 +2,17 @@ import React from 'react';
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
 import styled from 'styled-components'
+import css from './components/Todo.css'
 
 const StyledContainer = styled.div`
   background-color: red;
-  width: 50%;
+  border: 1px solid white;
+  width: 60vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 25px;
+  font-family: 'Recursive', sans-serif;  
 `
 
 const todoList = [
@@ -61,14 +65,23 @@ class App extends React.Component {
     })
   }
 
+  clearCompleted = () => {
+    let stillToDo = this.state.todoList.filter(item => !item.completed)
+    this.setState({todoList: stillToDo})
+  }
+
   render() {
     return (
       <StyledContainer>
-        <h2>Lets get $hiT done!</h2>
-        <TodoForm addItem={this.addItem}/>
+        <h2> Lets get this $hiT done! ✅  </h2>
+        <TodoForm 
+        addItem={this.addItem}
+        clearCompleted={this.clearCompleted}
+        />
         <TodoList 
         toggleItem={this.toggleItem} 
-        todoList={this.state.todoList} />
+        todoList={this.state.todoList} 
+        />
       </StyledContainer>
     );
   }

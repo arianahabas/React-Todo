@@ -4,6 +4,20 @@
 
 
 import React from 'react';
+import App from '../App'
+import styled from 'styled-components'
+
+const StyledButton = styled.button `
+    font-family: 'Recursive', sans-serif;
+
+`
+const Style = styled.div`
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+`
 
 class TodoForm extends React.Component {
 
@@ -11,12 +25,12 @@ class TodoForm extends React.Component {
         super()
         this.state={
             itemText:''
-        }
+        }   
     }
 
     handleChanges = e => {
         this.setState({
-            itemText: e.target.value
+            itemText: e.target.value,
         })
     }
 
@@ -28,18 +42,22 @@ class TodoForm extends React.Component {
         })
     }
 
+    
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input 
-                placeholder='Enter new task here' type='text' 
-                name='itemText' 
-                onChange={this.handleChanges} 
-                value={this.state.itemText}>
-                </input>
-                <button>Add</button>
-                <button>Clear Completed</button>
-            </form>
+            <Style>
+                <form onSubmit={this.handleSubmit}>
+                    <input 
+                    placeholder='Enter new task here' type='text' 
+                    name='itemText' 
+                    onChange={this.handleChanges} 
+                    value={this.state.itemText}
+                    >
+                    </input>
+                    <StyledButton>Add</StyledButton>
+                </form>
+               <StyledButton onClick={this.props.clearCompleted}>Clear Completed </StyledButton>
+            </Style>
         )
     }
 }

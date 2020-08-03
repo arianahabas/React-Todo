@@ -1,0 +1,10 @@
+
+body {
+    background-color: #2d2d37;
+    display:flex;
+    justify-content: center;
+    margin: 40px;
+    font-family: 'Recursive', sans-serif;
+  }
+
+  
