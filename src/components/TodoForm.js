@@ -4,19 +4,27 @@
 
 
 import React from 'react';
-import App from '../App'
 import styled from 'styled-components'
 
 const StyledButton = styled.button `
     font-family: 'Recursive', sans-serif;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 8px;
 
 `
 const Style = styled.div`
     display: flex;
+    flex-direction:column;
     width: 50%;
-    flex-direction: column;
     align-items: center;
     padding: 10px;
+
+    input{
+        font-family: 'Recursive', sans-serif;
+        margin: 5px;
+    }
+
 `
 
 class TodoForm extends React.Component {
@@ -41,14 +49,13 @@ class TodoForm extends React.Component {
             itemText: ''
         })
     }
-
     
     render() {
         return (
             <Style>
                 <form onSubmit={this.handleSubmit}>
                     <input 
-                    placeholder='Enter new task here' type='text' 
+                    placeholder='Enter your task here' type='text' 
                     name='itemText' 
                     onChange={this.handleChanges} 
                     value={this.state.itemText}
